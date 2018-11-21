@@ -17,13 +17,14 @@ function getPromotions(item,promote){
 	return item;
 }
 function getBroughtItem(allitem, boughtItem){
-	let eachItem = allitem.filter(a=>boughtItem.includes(a.barcode));
+	let boughtcode = boughtItem.map(b=>b.split('-')[0]);
+	let eachItem = allitem.filter(a=>boughtcode.includes(a.barcode));
 	eachItem.map(a=>a.quantity = 0);
 	for (let index = 0; index<boughtItem.length;index++){
 		for (let jndex = 0; jndex<eachItem.length;jndex++){
-			if (boughtItem[index].includes(eachItem[jndex].barcode)){
+			if (boughtItem[index].includes(eachItem[jndex].barcode.split('-')[0])){
 				if ((boughtItem[index].length)>10){
-					eachItem[jndex].quantity=eachItem[jndex].quantity+2;
+					eachItem[jndex].quantity=eachItem[jndex].quantity+(parseInt(boughtItem[jndex].split('-')[1]));
 				}else{
 					eachItem[jndex].quantity=eachItem[jndex].quantity+1;
 				}
