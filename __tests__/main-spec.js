@@ -27,13 +27,24 @@ it ('To test with weight items', () => {
 	expect(actual).toBe(expected);
 });
 
-it ('To test with weight items', () => {
+it ('To test qualified discount items', () => {
 	var expected = "***<store earning no money>Receipt ***\n"+
-"\n"+
-"\n"+
+"Name: Water, Quantity: 3 bottles Unit price: 3.00(yuan), Subtotal: 6.00 (yuan)\n"+
 "----------------------\n"+
-""+
-""+
+"Total: 6.00 (yuan)\n"+
+"Saving: 3.00 (yuan)\n"+
+"**********************";
+	var item = ['ITEM000001','ITEM000001','ITEM000001'];
+	var actual = printReceipt.printReceipt(item);
+	expect(actual).toBe(expected);
+});
+
+it ('To test not qualified discount items', () => {
+	var expected = "***<store earning no money>Receipt ***\n"+
+"Name: Water, Quantity: 3 bottles Unit price: 3.00(yuan), Subtotal: 6.00 (yuan)\n"+
+"----------------------\n"+
+"Total: 6.00 (yuan)\n"+
+"Saving: 3.00 (yuan)\n"+
 "**********************";
 	var item = ['ITEM000001','ITEM000001','ITEM000001'];
 	var actual = printReceipt.printReceipt(item);
