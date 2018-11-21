@@ -4,8 +4,11 @@
   "description": "pos system",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node_modules/.bin/jest"
   },
   "author": "J",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^23.6.0"
+  }
 }
