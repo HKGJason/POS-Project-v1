@@ -8,8 +8,17 @@ function printReceipt(boughtItem){
 }
 function getBroughtItem(allitem, boughtItem){
 	let eachItem = allitem.filter(a=>boughtItem.includes(a.barcode));
+	eachItem.map(a=>a.quantity = 0);
+	for (let index = 0; index<boughtItem.length;index++){
+		for (let jndex = 0; jndex<eachItem.length;jndex++){
+			if (boughtItem[index]===eachItem[jndex].barcode)
+				eachItem[jndex].quantity=eachItem[jndex].quantity+1;
+		}
+	}
 	return eachItem;
 }
+
+
 function loadAllItems() {
   return [
     {
