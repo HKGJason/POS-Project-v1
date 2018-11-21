@@ -1,6 +1,9 @@
-const printRecipe = require('../main');
+const printReceipt = require('../main');
 
-it ('To test adding two numbers', () => {
-	expect(printRecipe.add(2,3)).toBe(5);
+it ('To test output recipe', () => {
+	var expected = "***<store earning no money>Receipt ***\n";
+	var item = ['ITEM000001'];
+	var actual = printReceipt.printReceipt(item);
+	expect(actual).toBe(expected);
 });
 

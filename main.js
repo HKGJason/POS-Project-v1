@@ -1,5 +1,14 @@
-function add(a,b){
-	return a+b;
+function printReceipt(boughtItem){
+	var recipeStr = "***<store earning no money>Receipt ***\n";
+	var allitem = loadAllItems();
+	var allPromote = loadPromotions();
+	var eachItem = getBroughtItem(allitem, boughtItem);
+	return eachItem;
+	//return recipeStr;
+}
+function getBroughtItem(allitem, boughtItem){
+	let eachItem = allitem.filter(a=>boughtItem.includes(a.barcode));
+	return eachItem;
 }
 function loadAllItems() {
   return [
@@ -56,5 +65,5 @@ function loadPromotions() {
 
 
 module.exports = {
-	add
+	printReceipt
 }
