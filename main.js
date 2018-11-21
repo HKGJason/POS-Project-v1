@@ -4,8 +4,22 @@ function printReceipt(boughtItem){
 	var allPromote = loadPromotions();
 	var eachItem = getBroughtItem(allitem, boughtItem);
 	eachItem = getPromotions(eachItem,allPromote)
-	return eachItem;
-	//return recipeStr;
+	eachItem.forEach(e=>{
+		recipeStr = recipeStr + printReceiptLine(e);
+	});	
+	return recipeStr;
+}
+function printReceiptLine(item){
+	let subtotal = 0;
+	if (item.save >0){
+		subtotal = item.price * item.quantity - item.save;
+	} else {
+		subtotal = item.price * item.quantity;
+	}
+	let line = "Name: "+item.name+", Quantity: "+item.quantity+" "+item.unit+
+				" Unit price: "+item.price.toFixed(2)+"(yuan), Subtotal: "+subtotal.toFixed(2)+
+				" (yuan)\n";
+	return line;
 }
 function getPromotions(item,promote){
 	promote.forEach(p=>{
