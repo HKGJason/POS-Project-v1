@@ -7,7 +7,23 @@ function printReceipt(boughtItem){
 	eachItem.forEach(e=>{
 		recipeStr = recipeStr + printReceiptLine(e);
 	});	
+	recipeStr = recipeStr + '----------------------\n';
+	let total = 0;
+	let saved = 0;
+	eachItem.forEach(e=>{
+		total = total + (e.price * e.quantity);
+		if (e.save > 0)
+			saved = saved + e.save;
+	});
+	recipeStr = recipeStr + printSummary(total,saved);
 	return recipeStr;
+}
+function printSummary(total, saved){
+	let line = "Total: "+(total-saved).toFixed(2)+" (yuan)\n"
+	+"Saving: "+saved.toFixed(2)+" (yuan)\n"+
+	"**********************";
+	return line;
+		
 }
 function printReceiptLine(item){
 	let subtotal = 0;
