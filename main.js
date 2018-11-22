@@ -1,16 +1,21 @@
 function printReceipt(boughtItem){
+	
+	var eachItem = getBroughtItem(boughtItem);
+	eachItem = getPromotions(eachItem)
+	var recipeStr = formatRecipe(eachItem);
+	
+	
+	return recipeStr;
+}
+function formatRecipe(item){
 	var recipeStr = "***<store earning no money>Receipt ***\n";
-	var allitem = loadAllItems();
-	var allPromote = loadPromotions();
-	var eachItem = getBroughtItem(allitem, boughtItem);
-	eachItem = getPromotions(eachItem,allPromote)
-	eachItem.forEach(e=>{
+	item.forEach(e=>{
 		recipeStr = recipeStr + printReceiptLine(e);
 	});	
 	recipeStr = recipeStr + '----------------------\n';
 	let total = 0;
 	let saved = 0;
-	eachItem.forEach(e=>{
+	item.forEach(e=>{
 		total = total + (e.price * e.quantity);
 		if (e.save > 0)
 			saved = saved + e.save;
@@ -37,7 +42,8 @@ function printReceiptLine(item){
 				" (yuan)\n";
 	return line;
 }
-function getPromotions(item,promote){
+function getPromotions(item){
+	let promote = loadPromotions();
 	promote.forEach(p=>{
 		if(p.type === 'BUY_TWO_GET_ONE_FREE')
 		{
@@ -46,7 +52,8 @@ function getPromotions(item,promote){
 	});
 	return item;
 }
-function getBroughtItem(allitem, boughtItem){
+function getBroughtItem(boughtItem){
+	let allitem = loadAllItems();
 	let boughtcode = boughtItem.map(b=>b.split('-')[0]);
 	let eachItem = allitem.filter(a=>boughtcode.includes(a.barcode));
 	eachItem.map(a=>a.quantity = 0);
