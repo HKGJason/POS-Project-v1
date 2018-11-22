@@ -41,12 +41,12 @@ it ('To test qualified discount items', () => {
 
 it ('To test not qualified discount items', () => {
 	var expected = "***<store earning no money>Receipt ***\n"+
-"Name: Water, Quantity: 3 bottles Unit price: 3.00(yuan), Subtotal: 6.00 (yuan)\n"+
+"Name: Apple, Quantity: 3 Kg Unit price: 5.50(yuan), Subtotal: 16.50 (yuan)\n"+
 "----------------------\n"+
-"Total: 6.00 (yuan)\n"+
-"Saving: 3.00 (yuan)\n"+
+"Total: 16.50 (yuan)\n"+
+"Saving: 0.00 (yuan)\n"+
 "**********************";
-	var item = ['ITEM000001','ITEM000001','ITEM000001'];
+	var item = ['ITEM000002','ITEM000002','ITEM000002'];
 	var actual = printReceipt.printReceipt(item);
 	expect(actual).toBe(expected);
 });
