@@ -50,4 +50,15 @@ it ('To test not qualified discount items', () => {
 	var actual = printReceipt.printReceipt(item);
 	expect(actual).toBe(expected);
 });
+it ('To test buy 6 get 2 free', () => {
+	var expected = "***<store earning no money>Receipt ***\n"+
+"Name: Water, Quantity: 6 bottles Unit price: 3.00(yuan), Subtotal: 12.00 (yuan)\n"+
+"----------------------\n"+
+"Total: 12.00 (yuan)\n"+
+"Saving: 6.00 (yuan)\n"+
+"**********************";
+	var item = ['ITEM000001','ITEM000001','ITEM000001','ITEM000001','ITEM000001','ITEM000001'];
+	var actual = printReceipt.printReceipt(item);
+	expect(actual).toBe(expected);
+});
 

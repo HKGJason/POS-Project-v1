@@ -41,7 +41,7 @@ function getPromotions(item,promote){
 	promote.forEach(p=>{
 		if(p.type === 'BUY_TWO_GET_ONE_FREE')
 		{
-			item.filter(i=>p.barcodes.includes(i.barcode)).filter(i=>i.quantity>=3).map(j=>j.save = j.price)
+			item.filter(i=>p.barcodes.includes(i.barcode)).filter(i=>i.quantity>=3).map(j=>j.save = j.price*(Math.floor(j.quantity/3)));
 		};
 	});
 	return item;
